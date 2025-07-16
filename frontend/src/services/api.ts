@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Job, Application, JobFilters, ApplicationForm } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://altibbe-pi.vercel.app';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://altibbe-ba.vercel.app';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
