@@ -70,14 +70,19 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/jobboard'
     process.exit(1);
   });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running on port ${PORT}`);
-  console.log(`📡 API Health Check: http://localhost:${PORT}/api/health`);
-  console.log(`📋 Jobs API: http://localhost:${PORT}/api/jobs`);
-  console.log(`💼 Applications API: http://localhost:${PORT}/api/applications`);
-  console.log(`🌍 Environment: ${process.env.NODE_ENV || 'development'}`);
-});
+// For Vercel deployment
+if (process.env.NODE_ENV === 'production') {
+  console.log('Server is running in production mode on Vercel');
+  module.exports = app;
+} else {
+  // Start server
+  app.listen(PORT, () => {
+    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(`📡 API Health Check: http://localhost:${PORT}/api/health`);
+    console.log(`📋 Jobs API: http://localhost:${PORT}/api/jobs`);
+    console.log(`💼 Applications API: http://localhost:${PORT}/api/applications`);
+  });
+}
 
 // Graceful shutdown
 process.on('SIGTERM', () => {
