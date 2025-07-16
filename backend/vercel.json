@@ -8,6 +8,10 @@
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "src/server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "src/server.js"
     }
@@ -19,5 +23,11 @@
     "src/server.js": {
       "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "src/server.js"
+    }
+  ]
 }

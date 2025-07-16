@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Job, Application, JobFilters, ApplicationForm } from '../types';
 
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://altibbe-pi.vercel.app/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://altibbe-pi.vercel.app';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
@@ -13,7 +13,7 @@ const api = axios.create({
 export const jobsApi = {
   getJobs: async (filters?: JobFilters): Promise<Job[]> => {
     try {
-      const response = await api.get('/jobs', { params: filters });
+      const response = await api.get('/api/jobs', { params: filters });
       return response.data;
     } catch (error) {
       console.error('Error fetching jobs:', error);
@@ -23,7 +23,7 @@ export const jobsApi = {
 
   getJob: async (id: string): Promise<Job> => {
     try {
-      const response = await api.get(`/jobs/${id}`);
+      const response = await api.get(`/api/jobs/${id}`);
       return response.data;
     } catch (error) {
       console.error('Error fetching job:', error);
@@ -35,7 +35,7 @@ export const jobsApi = {
 export const applicationsApi = {
   submitApplication: async (jobId: string, applicationData: ApplicationForm): Promise<Application> => {
     try {
-      const response = await api.post('/applications', {
+      const response = await api.post('/api/applications', {
         job_id: jobId,
         ...applicationData,
       });
@@ -48,7 +48,7 @@ export const applicationsApi = {
 
   getApplications: async (): Promise<Application[]> => {
     try {
-      const response = await api.get('/applications');
+      const response = await api.get('/api/applications');
       return response.data;
     } catch (error) {
       console.error('Error fetching applications:', error);
