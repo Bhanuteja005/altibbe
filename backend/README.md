@@ -44,13 +44,13 @@ npm run dev
 
 ```bash
 # Test health endpoint
-curl http://localhost:5000/api/health
+curl https://altibbe-ba.vercel.app/api/health
 
 # Test jobs endpoint
-curl http://localhost:5000/api/jobs
+curl https://altibbe-ba.vercel.app/api/jobs
 
 # Test with filters
-curl "http://localhost:5000/api/jobs?type=remote&location=Remote"
+curl "https://altibbe-ba.vercel.app/api/jobs?type=remote&location=Remote"
 ```
 
 ## 📁 Project Structure

@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 
-The app will open at `http://localhost:3000`
+The app will open at `https://altibbe-fro.vercel.app/`
 
 ## 📋 Features
 
@@ -26,7 +26,7 @@ The app will open at `http://localhost:3000`
 
 ## 🧪 Testing
 
-Make sure the backend is running on `http://localhost:5000` before starting the frontend.
+Make sure the backend is running on `https://altibbe-ba.vercel.app/` before starting the frontend.
 
 ## 📁 Project Structure
 

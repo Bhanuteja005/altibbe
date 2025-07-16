@@ -124,7 +124,7 @@ cd frontend
 npm start
 ```
 
-The application will open at `http://localhost:3000`
+The application will open at `https://altibbe-fro.vercel.app`
 
 ## 🌐 API Endpoints
 
@@ -145,17 +145,17 @@ The application will open at `http://localhost:3000`
 ### 1. Test Backend API
 ```bash
 # Check if backend is running
-curl http://localhost:5000/api/health
+curl https://altibbe-ba.vercel.app/api/health
 
 # Get all jobs
-curl http://localhost:5000/api/jobs
+curl https://altibbe-ba.vercel.app/api/jobs
 
 # Or visit in browser:
-# http://localhost:5000/api/jobs
+# https://altibbe-ba.vercel.app/api/jobs
 ```
 
 ### 2. Test Frontend
-- Visit `http://localhost:3000`
+- Visit `https://altibbe-fro.vercel.app/`
 - You should see job listings
 - Click "View Details" to see job details
 - Click "Apply Now" to submit applications
@@ -241,19 +241,3 @@ PORT=5000
 MONGODB_URI=mongodb://localhost:27017/jobboard
 NODE_ENV=development
 ```
-
-## 🚢 Deployment
-
-### Backend
-- Deploy to Heroku, Railway, or AWS
-- Set environment variables in deployment platform
-- Use MongoDB Atlas for production database
-
-### Frontend
-- Build: `npm run build`
-- Deploy to Netlify, Vercel, or AWS S3
-- Update API base URL for production
-
-## 📄 License
-
-This project is licensed under the MIT License.
