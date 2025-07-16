@@ -25,8 +25,23 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="container">Loading applications...</div>;
-  if (error) return <div className="container">Error: {error}</div>;
+  if (loading) return (
+    <div className="admin-dashboard">
+      <div className="loading">Loading applications...</div>
+    </div>
+  );
+  
+  if (error) return (
+    <div className="admin-dashboard">
+      <div className="error-message">
+        <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>😔</div>
+        <div>{error}</div>
+        <button onClick={fetchApplications} className="btn btn-primary" style={{ marginTop: '1rem' }}>
+          Try Again
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <div className="admin-dashboard">
@@ -58,15 +73,16 @@ const AdminDashboard: React.FC = () => {
             </div>
             
             <div className="application-content">
-              <div className="resume-link">
+              <div className="resume-link" style={{ marginBottom: '1rem' }}>
                 <strong>Resume:</strong>{' '}
                 <a 
                   href={application.resume_link} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-secondary"
+                  style={{ marginLeft: '0.5rem' }}
                 >
-                  View Resume
+                  📄 View Resume
                 </a>
               </div>
               
@@ -81,7 +97,9 @@ const AdminDashboard: React.FC = () => {
 
       {applications.length === 0 && (
         <div className="no-applications">
-          <p>No applications received yet.</p>
+          <div style={{ fontSize: '4rem', marginBottom: '2rem' }}>📋</div>
+          <h3 style={{ marginBottom: '1rem', color: 'white' }}>No applications yet</h3>
+          <p>Applications will appear here once candidates start applying for jobs.</p>
         </div>
       )}
     </div>

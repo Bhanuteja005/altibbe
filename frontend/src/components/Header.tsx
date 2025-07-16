@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
   return (
-    <header className="header">
+    <header className="header glassmorphism">
       <div className="header-content">
         <Link to="/" className="logo">
           CareerBoost

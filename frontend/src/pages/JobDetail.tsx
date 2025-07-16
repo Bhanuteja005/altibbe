@@ -29,15 +29,42 @@ const JobDetail: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="container">Loading job details...</div>;
-  if (error) return <div className="container">Error: {error}</div>;
-  if (!job) return <div className="container">Job not found</div>;
+  if (loading)
+    return (
+      <div className="container">
+        <div className="loading">Loading job details...</div>
+      </div>
+    );
+
+  if (error)
+    return (
+      <div className="container">
+        <div className="error-message">
+          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>😔</div>
+          <div>{error}</div>
+          <button
+            onClick={() => fetchJob(id!)}
+            className="btn btn-primary"
+            style={{ marginTop: '1rem' }}
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    );
+
+  if (!job)
+    return (
+      <div className="container">
+        <div className="error-message">Job not found</div>
+      </div>
+    );
 
   return (
     <div className="container">
       <div className="job-detail">
         <div className="job-header">
-          <h1 className="job-title">{job.title}</h1>
+          <h1>{job.title}</h1>
           <div className="job-company">{job.company}</div>
           <div className="job-meta">
             <div className="job-meta-item">
@@ -56,6 +83,12 @@ const JobDetail: React.FC = () => {
                 <span>{job.salary}</span>
               </div>
             )}
+            <div className="job-meta-item">
+              <span>📅</span>
+              <span>
+                Posted {new Date(job.createdAt).toLocaleDateString()}
+              </span>
+            </div>
           </div>
         </div>
 
@@ -88,10 +121,10 @@ const JobDetail: React.FC = () => {
 
         <div className="job-actions">
           <Link to={`/jobs/${job._id}/apply`} className="btn btn-primary">
-            Apply Now
+            🚀 Apply Now
           </Link>
           <Link to="/" className="btn btn-secondary">
-            Back to Jobs
+            ← Back to Jobs
           </Link>
         </div>
       </div>

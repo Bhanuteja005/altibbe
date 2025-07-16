@@ -16,6 +16,9 @@ const JobCard: React.FC<JobCardProps> = ({ job }) => {
         {job.type.charAt(0).toUpperCase() + job.type.slice(1)}
       </div>
       <p className="job-description">{job.description}</p>
+      {job.salary && (
+        <div className="job-salary">💰 {job.salary}</div>
+      )}
       <div className="job-actions">
         <Link to={`/jobs/${job._id}`} className="btn btn-primary">
           View Details

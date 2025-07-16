@@ -95,8 +95,17 @@ const ApplicationForm: React.FC = () => {
     }
   };
 
-  if (loading) return <div className="container">Loading...</div>;
-  if (!job) return <div className="container">Job not found</div>;
+  if (loading) return (
+    <div className="container">
+      <div className="loading">Loading application form...</div>
+    </div>
+  );
+  
+  if (!job) return (
+    <div className="container">
+      <div className="error-message">Job not found</div>
+    </div>
+  );
 
   return (
     <div className="container">
@@ -106,7 +115,7 @@ const ApplicationForm: React.FC = () => {
         
         {success && (
           <div className="success-message">
-            Application submitted successfully! Redirecting...
+            🎉 Application submitted successfully! Redirecting...
           </div>
         )}
         
@@ -123,6 +132,7 @@ const ApplicationForm: React.FC = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
+              placeholder="Enter your full name"
               required
             />
             {errors.name && <div className="error-message">{errors.name}</div>}
@@ -136,6 +146,7 @@ const ApplicationForm: React.FC = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              placeholder="Enter your email address"
               required
             />
             {errors.email && <div className="error-message">{errors.email}</div>}
@@ -149,6 +160,7 @@ const ApplicationForm: React.FC = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
+              placeholder="Enter your phone number"
             />
           </div>
 
@@ -160,7 +172,7 @@ const ApplicationForm: React.FC = () => {
               name="resume_link"
               value={formData.resume_link}
               onChange={handleChange}
-              placeholder="https://..."
+              placeholder="https://drive.google.com/... or LinkedIn profile"
               required
             />
             {errors.resume_link && <div className="error-message">{errors.resume_link}</div>}
@@ -173,7 +185,7 @@ const ApplicationForm: React.FC = () => {
               name="cover_letter"
               value={formData.cover_letter}
               onChange={handleChange}
-              placeholder="Tell us why you're interested in this position..."
+              placeholder="Tell us why you're interested in this position and what makes you a great fit..."
               required
             />
             {errors.cover_letter && <div className="error-message">{errors.cover_letter}</div>}
@@ -185,7 +197,7 @@ const ApplicationForm: React.FC = () => {
               className="btn btn-primary"
               disabled={submitting}
             >
-              {submitting ? 'Submitting...' : 'Submit Application'}
+              {submitting ? '⏳ Submitting...' : '🚀 Submit Application'}
             </button>
             <button 
               type="button" 
