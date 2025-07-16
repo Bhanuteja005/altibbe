@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import JobCard from '../components/JobCard';
 import JobFilters from '../components/JobFilters';
 import { Job, JobFilters as JobFiltersType } from '../types';
@@ -11,11 +11,7 @@ const Home: React.FC = () => {
   const [filters, setFilters] = useState<JobFiltersType>({});
   const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    fetchJobs();
-  }, [filters]);
-
-  const fetchJobs = async () => {
+  const fetchJobs = useCallback(async () => {
     try {
       setLoading(true);
       const jobsData = await jobsApi.getJobs(filters);
@@ -27,7 +23,11 @@ const Home: React.FC = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [filters]);
+
+  useEffect(() => {
+    fetchJobs();
+  }, [fetchJobs]);
 
   const handleFilterChange = (newFilters: JobFiltersType) => {
     setFilters(newFilters);
@@ -108,13 +108,13 @@ const Home: React.FC = () => {
             <div className="error" style={{ 
               textAlign: 'center', 
               marginBottom: '2rem',
-              background: 'rgba(244, 67, 54, 0.1)',
+              background: 'rgba(239, 68, 68, 0.1)',
               padding: '2rem',
               borderRadius: '20px',
-              border: '1px solid rgba(244, 67, 54, 0.2)'
+              border: '1px solid rgba(239, 68, 68, 0.2)'
             }}>
               <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>😔</div>
-              <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#f44336' }}>
+              <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#991b1b' }}>
                 {error}
               </div>
               <button 
@@ -134,7 +134,7 @@ const Home: React.FC = () => {
                   {filteredJobs.length} opportunity{filteredJobs.length !== 1 ? 's' : ''} found
                 </span>
                 {searchQuery && (
-                  <span style={{ marginLeft: '1rem', color: '#667eea' }}>
+                  <span style={{ marginLeft: '1rem', color: '#2563eb' }}>
                     for "{searchQuery}"
                   </span>
                 )}
@@ -151,7 +151,7 @@ const Home: React.FC = () => {
               {filteredJobs.length === 0 && (
                 <div className="no-jobs">
                   <div style={{ fontSize: '4rem', marginBottom: '2rem' }}>🔍</div>
-                  <h3 style={{ marginBottom: '1rem', color: 'white', fontSize: '2rem' }}>
+                  <h3 style={{ marginBottom: '1rem', color: '#1f2937', fontSize: '2rem' }}>
                     No matches found
                   </h3>
                   <p style={{ marginBottom: '2rem', fontSize: '1.1rem' }}>
@@ -177,4 +177,3 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-                 
