@@ -161,7 +161,8 @@ body::before {
   transform: scale(0.8);
 }
 
-.nav-links a:hover::before {
+.nav-links a:hover::before,
+.nav-links a:focus::before {
   opacity: 1;
   transform: scale(1);
 }
@@ -178,12 +179,14 @@ body::before {
   border-radius: 30px;
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a:focus::after {
   left: 100%;
 }
 
-.nav-links a:hover {
-  color: blue;
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--text-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -914,7 +917,7 @@ body::before {
 
 .application-card {
   background: var(--card-background);
-  padding: 2rem;
+  padding: 0.5rem;
   border-radius: var(--border-radius);
   border: 1px solid var(--border-color);
   border-left: 4px solid var(--primary-color);
@@ -964,6 +967,10 @@ body::before {
   border-left: 4px solid var(--primary-color);
   color: var(--text-secondary);
   margin-top: 1rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  line-height: 1.6;
 }
 
 /* Footer */
@@ -1157,6 +1164,66 @@ body::before {
     gap: 1rem;
   }
   
+  .applications-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .application-card {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .application-info h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .application-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .job-info {
+    margin-top: 1rem;
+  }
+  
+  .job-info h5 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .job-info span {
+    font-size: 0.95rem;
+  }
+  
+  .cover-letter p {
+    padding: 0.875rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  .application-content {
+    border-top: 1px solid var(--border-light);
+    padding-top: 1rem;
+  }
+  
+  .resume-link {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .resume-link .btn {
+    margin-left: 0 !important;
+    align-self: flex-start;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+  
   .form-container {
     padding: 2rem;
     margin-top: 100px;
@@ -1169,6 +1236,14 @@ body::before {
   
   .admin-dashboard {
     padding: 100px 1rem 0;
+  }
+  
+  .admin-header {
+    padding: 1.5rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 2rem;
   }
 }
 
@@ -1206,6 +1281,7 @@ body::before {
   .mobile-menu-toggle {
     font-size: 1.3rem;
     padding: 0.25rem;
+    margin-left: 120px;
   }
   
   .job-card {
@@ -1218,6 +1294,68 @@ body::before {
   
   .stats-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .applications-grid {
+    gap: 1rem;
+  }
+  
+  .application-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .application-header {
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .application-info h4 {
+    font-size: 1.1rem;
+  }
+  
+  .application-meta {
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .job-info h5 {
+    font-size: 1rem;
+  }
+  
+  .job-info span {
+    font-size: 0.9rem;
+  }
+  
+  .cover-letter p {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    border-radius: 8px;
+  }
+  
+  .resume-link .btn {
+    padding: 0.625rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .admin-dashboard {
+    padding: 90px 0.5rem 0;
+  }
+  
+  .admin-header {
+    padding: 1rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .admin-header p {
+    font-size: 1rem;
   }
 }
 
@@ -1250,6 +1388,8 @@ body::before {
   .mobile-menu-toggle {
     font-size: 1.2rem;
     padding: 0.2rem;
+        margin-left: 150px;
+
   }
   
   .hero-title {
@@ -1263,6 +1403,59 @@ body::before {
   
   .container {
     padding: 0 1rem;
+  }
+  
+  .applications-grid {
+    gap: 0.75rem;
+  }
+  
+  .application-card {
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+  
+  .application-info h4 {
+    font-size: 1rem;
+  }
+  
+  .application-meta {
+    font-size: 0.8rem;
+  }
+  
+  .job-info h5 {
+    font-size: 0.95rem;
+  }
+  
+  .job-info span {
+    font-size: 0.85rem;
+  }
+  
+  .cover-letter p {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    line-height: 1.3;
+    border-radius: 6px;
+  }
+  
+  .resume-link .btn {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .admin-dashboard {
+    padding: 80px 0.25rem 0;
+  }
+  
+  .admin-header {
+    padding: 0.75rem;
+  }
+  
+  .admin-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .admin-header p {
+    font-size: 0.9rem;
   }
 }
 

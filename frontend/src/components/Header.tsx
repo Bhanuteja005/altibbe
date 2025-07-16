@@ -59,6 +59,7 @@ const Header: React.FC = () => {
         
         <nav>
           <ul className={`nav-links ${mobileMenuOpen ? 'active' : ''}`}>
+            <li><Link to="/" onClick={closeMobileMenu}>Jobs</Link></li>
             <li><Link to="/admin" onClick={closeMobileMenu}>Admin</Link></li>
           </ul>
         </nav>
