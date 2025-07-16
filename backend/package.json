@@ -6,8 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
-    "seed": "node src/seedData.js",
-    "build": "echo 'No build step required for server deployment'"
+    "seed": "node src/seedData.js"
   },
   "dependencies": {
     "express": "^4.18.2",
@@ -23,3 +22,4 @@
     "node": ">=18.x"
   }
 }
+
